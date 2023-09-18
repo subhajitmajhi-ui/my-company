@@ -12,6 +12,32 @@ function SingleProduct() {
   const { productId } = useParams();
   const [productData, setProductData] = useState({})
   const [loading, setLoading] = useState(true)
+  
+  const initialCart = JSON.parse(localStorage.getItem('cart')) || [];
+  const [cart, setCart] = useState(initialCart);
+  const [noOfProduct, setNoOfProduct] = useState(initialCart.length)
+
+  const addToCart = (product) => {
+    const existingProductIndex = cart.findIndex((item) => item.id === product.id);
+
+    if (existingProductIndex !== -1) {
+      const updatedCart = [...cart];
+      updatedCart[existingProductIndex].quantity++;
+      setCart(updatedCart);
+    } else {
+      setCart([...cart, { ...product, quantity: 1 }]);
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    setNoOfProduct(cart.length)
+  }, [cart]);
+
+
+
+
+
 
 
   useEffect(() => {
@@ -44,7 +70,7 @@ function SingleProduct() {
   return (
     productData.images && <div className="min-h-screen flex flex-col">
       <main className="mx-auto sm:px-2 md:px-4">
-        <NavBar />
+        <NavBar noOfProduct={noOfProduct} />
         <div className="grid grid-cols-12">
           <div className="col-span-3 p-2 hidden md:block">
             <div className="sticky top-20">
@@ -58,7 +84,7 @@ function SingleProduct() {
           </div>
           <div className="col-span-12 md:col-span-3 p-2">
             <div className="md:sticky md:top-20 mt-16 md:mt-0 px-4 md:px-0">
-            <AddToCartBox product={productData} />
+            <AddToCartBox product={productData} addToCart={addToCart} />
             </div>
           </div>
         </div>
