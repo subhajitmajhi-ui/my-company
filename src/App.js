@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes instead of Switch
+import SingleProduct from './pages/SingleProduct';
+import Home from './pages/Home';
+import Nopage from './pages/Nopage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes> 
+        <Route path="/product/:productId" element={<SingleProduct />} />
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<Nopage />} />
+      </Routes>
+    </Router>
   );
 }
 
