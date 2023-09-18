@@ -14,9 +14,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 This readme document provides an overview of the structure and URLs of a website with a home page and a product page. The website is organized as follows:
 
-## Home Page: The home page is accessible at the root URL, which is /.
+## Home Page: The home page is accessible at the root URL, which is https://main--shimmering-meringue-1841dc.netlify.app/.
 
-## Product Page: The product page is accessible at /product/1.
+## Product Page: The product page is accessible at https://main--shimmering-meringue-1841dc.netlify.app/product/2.
 
 ## Home Page (URL: /)
 The home page serves as the main landing page for the website. It typically contains all product, links to single product pages. Visitors will see this page when they enter the website's base URL.
