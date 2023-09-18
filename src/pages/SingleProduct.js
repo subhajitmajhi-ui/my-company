@@ -57,7 +57,7 @@ function SingleProduct() {
             <ProductImage product={productData} />
           </div>
           <div className="col-span-12 md:col-span-3 p-2">
-            <div className="md:sticky top-20">
+            <div className="md:sticky md:top-20 mt-16 md:mt-0 px-4 md:px-0">
             <AddToCartBox product={productData} />
             </div>
           </div>
