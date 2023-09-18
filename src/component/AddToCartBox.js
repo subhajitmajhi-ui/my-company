@@ -2,7 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import './_commonStyle.css';
 
-const AddToCartBox = ({ product }) => {
+const AddToCartBox = ({ product, addToCart }) => {
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
+ 
   return (
     product && <div className="max-w-xs">
       <div className="bg-white overflow-hidden">
@@ -40,7 +44,7 @@ const AddToCartBox = ({ product }) => {
             </div>
           </div>
           <div className="my-4">
-          <button className="w-full bg-black text-white py-2 px-4 rounded-full hover:bg-gray-800 transition duration-300">ADD TO BAG</button>
+          <button onClick={handleAddToCart} className="w-full bg-black text-white py-2 px-4 rounded-full hover:bg-gray-800 transition duration-300">ADD TO BAG</button>
           </div>
           
           <p className="text-black text-sm mb-2"><span className="font-semibold">Brand:</span> {product.brand}</p>
